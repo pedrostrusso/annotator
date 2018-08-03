@@ -3,7 +3,7 @@ NULL
 
 #' Calculate k-Nearest Neighbors Distance
 #'
-#' @param sdm String Distance Matrix, as returned by \code{calculate_distance} function
+#' @param sdm String Distance Matrix, as returned by the \code{calculate_distance} function
 #' @param k Number of neighbors to compute distance
 #'
 #' @keywords internal

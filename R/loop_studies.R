@@ -10,7 +10,7 @@ NULL
 #' @import data.table
 
 loop_studies <- function(studies_folder, out_folder,
-                         methods=c("jw", "sw1", "nw1", "nw3", "me", "lv", "dl",
+                         methods=c("jw", "sw", "nw", "me", "lv", "dl",
                                    "osa", "lcs", "qgram", "cosine", "jaccard")){
     studies <- dir(studies_folder)
     sapply(studies, function(folder){

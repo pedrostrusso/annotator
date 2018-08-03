@@ -13,21 +13,12 @@ NULL
 #' @param ... Additional arguments to the distance functions
 #' @export
 calculate_distance <- function(annot, method, col, ...){
-    if(method == "sw1"){
+    if(method == "sw"){
         sdm <- sw_matrix(annot[, col], annot[, col])
-    }else if(method == "sw2"){
-        sdm <- pw_alignment_matrix(annot[, col], annot[, col], type="local")
     }else if(method == "me"){
         sdm <- monge_elkan_matrix(annot[, col], annot[, col])
-    }else if(method == "nw1"){
+    }else if (method == "nw"){
         sdm <- nw_matrix(annot[, col], annot[, col], ...)
-    }else if(method == "nw2"){
-        sdm <- pw_alignment_matrix(annot[, col], annot[, col], type="global")
-    }else if (method == "nw3"){
-        my_params <- NameNeedle::defaultNeedleParams
-        my_params$MATCH <- 2
-        my_params$MISMATCH <- -2
-        sdm <- nw_matrix(annot[, col], annot[, col], my_params=my_params)
     }else if(method == "jw"){
         sdm <- stringdist::stringdistmatrix(annot[, col], annot[, col], method=method, p=0.1)
     }else if(method == "jaro"){

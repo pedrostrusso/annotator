@@ -9,10 +9,14 @@ NULL
 #'     (Default: NameNeedle::defaultNeedleParams)
 #'
 #' @export
-nw_metric <- function(A, B, my_params){
-    if(missing(my_params)){
-        my_params <- NameNeedle::defaultNeedleParams
-    }
+nw_metric <- function(A, B, nw_match=1, nw_mismatch=-1, gap=-1, gap_char="*"){
+    #my_params <- NameNeedle::defaultNeedleParams
+    my_params <- list()
+    my_params$MATCH <- nw_match
+    my_params$MISMATCH <- nw_mismatch
+    my_params$GAP <- gap
+    my_params$GAPCHAR <- gap_char
+
     res <- sqrt(NameNeedle::needleScores(A, A, params=my_params) +
                     NameNeedle::needleScores(B, B, params=my_params) -
                     2*NameNeedle::needleScores(A, B, params=my_params))

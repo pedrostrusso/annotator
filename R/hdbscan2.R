@@ -3,6 +3,10 @@ NULL
 
 #' Calculate HDBSCAN algorithm
 #'
+#' This is a modified version of the hdbscan function from the dbscan package
+#' in order to be able to calculate the KNN distance starting from a distance
+#' matrix.
+#'
 #' @param xdist A distance matrix
 #' @param minPts Minimum number of points per cluster
 #' @param gen_hdbscan_tree logical; should the robust single linkage tree be explicitly computed.
@@ -11,7 +15,7 @@ NULL
 #' @keywords internal
 #' @export
 #'
-hdbscan2 <- function(xdist, minPts=5, gen_hdbscan_tree = FALSE, gen_simplified_tree=FALSE) {
+hdbscan2 <- function(xdist, minPts=5) {
 
     ## Calculate Core distance using kNN
     euc_dist <- as.dist(xdist)

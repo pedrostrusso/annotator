@@ -5,8 +5,8 @@ Authors@R: person("Pedro", "Russo", email = "pedro.russo@usp.br", role = c("aut"
 Description: This package attempts to take information from a GEO study and group samples 
     according to sample metadata string similarity.
 Depends: R (>= 3.4.1)
-Imports: Biostrings, FastKNN, NameNeedle, data.table, stringdist, dbscan,
-    PTXQC, textreuse, qualV
+Imports: FastKNN, NameNeedle, data.table, stringdist, dbscan,
+    PTXQC, textreuse, qualV, fossil
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
