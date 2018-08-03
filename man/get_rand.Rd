@@ -4,8 +4,8 @@
 \alias{get_rand}
 \title{Get Rand index of annotated samples}
 \usage{
-get_rand(check_dir, methods = c("jw", "sw1", "nw1", "me", "lv", "dl", "osa",
-  "lcs", "qgram", "cosine", "jaccard"))
+get_rand(check_dir, methods = c("jw", "sw1", "nw1", "me", "lv", "dl",
+  "osa", "lcs", "qgram", "cosine", "jaccard"))
 }
 \arguments{
 \item{check_dir}{Directory which to check the annotations}

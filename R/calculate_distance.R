@@ -33,7 +33,7 @@ calculate_distance <- function(annot, method, col, ...){
     }else if(method == "jaro"){
         sdm <- stringdist::stringdistmatrix(annot[, col], annot[, col], method="jw", p=0)
     }else{
-        sdm <- stringdist::stringdistmatrix(annot[, col], annot[, col], method=method, p=p)
+        sdm <- stringdist::stringdistmatrix(annot[, col], annot[, col], method=method)
     }
     return(sdm)
 }

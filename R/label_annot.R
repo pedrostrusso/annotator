@@ -1,4 +1,5 @@
 #' @import PTXQC
+#' @import qualV
 NULL
 
 #' Automatic label creation
@@ -31,6 +32,20 @@ label_annot <- function(annot0){
         # 3rd label: longest common substring in the cluster
         label <- trimws(PTXQC::LCSn(clust_data$mega_col))
         annot0[annot0$Class == cluster, "label3"] <- label
+
+        # 4th label: longest common subsequence in the cluster
+        res <- character(0)
+        for(string in clust_data$mega_col){
+            a <- unlist(strsplit(string, " "))
+            if(length(res) == 0){
+                res <- a
+            }else{
+                z <- qualV::LCS(res, a)
+                res <- z$LCS
+            }
+        }
+        label <- paste(res, collapse= " ")
+        annot0[annot0$Class == cluster, "label4"] <- label
     }
     return(annot0)
 }

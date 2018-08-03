@@ -4,8 +4,8 @@
 \alias{annotate}
 \title{Annotate GEO samples}
 \usage{
-annotate(annot, method = c("jw", "jaro", "sw1", "sw2", "nw1", "nw2", "nw3",
-  "me", "lv", "dl", "osa", "lcs", "qgram", "cosine", "jaccard"),
+annotate(annot, method = c("jw", "jaro", "sw1", "sw2", "nw1", "nw2",
+  "nw3", "me", "lv", "dl", "osa", "lcs", "qgram", "cosine", "jaccard"),
   column = "combine", ...)
 }
 \arguments{

@@ -40,12 +40,8 @@ annotate <- function(annot, method=c("jw", "jaro", "sw1", "sw2", "nw1", "nw2", "
     }
 
     scores_res <- lapply(names(annot), function(col){
-        #h <- hclust(as.dist(sdm))
-        #plot(h)
-        #sdm2 <- as.data.frame(sdm)
-        #names(sdm2) <- annot[, col]
 
-        sdm <- calculate_distance(annot, method, col)
+        sdm <- calculate_distance(annot, method, col, ...)
 
         cl <- hdbscan2(xdist=sdm, minPts=3, gen_simplified_tree = FALSE, gen_hdbscan_tree = TRUE)
 
@@ -76,24 +72,11 @@ annotate <- function(annot, method=c("jw", "jaro", "sw1", "sw2", "nw1", "nw2", "
         stop("Each string has been assigned to its own cluster. Unable to classify samples")
     }
 
-    # # Select column based on cluster scores
-    # cluster_scores <- lapply(names(scores_res), function(col){
-    #     median(scores_res[[col]]$cluster_scores)
-    # })
-    # names(cluster_scores) <- names(scores_res)
-    # best_col <- unlist(cluster_scores[which.max(unlist(cluster_scores))])
-    # res <- scores_res[[names(best_col)]]
-
     res <- scores_res[["mega_col"]]
 
     annot0$Class <- res[[1]]$cluster
 
     annot0 <- label_annot(annot0)
-    # t <- tapply(annot[, "mega_col"], annot0$Class, function(x){
-    #     trimws(PTXQC::LCSn(x))
-    # })
-    #
-    #annot0$Class2 <- t[annot0$Class]
 
     return(annot0)
 }

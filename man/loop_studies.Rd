@@ -4,11 +4,13 @@
 \alias{loop_studies}
 \title{Loop over studies and annotate sample classes}
 \usage{
-loop_studies(studies_folder, methods = c("jw", "sw1", "nw1", "nw3", "me",
-  "lv", "dl", "osa", "lcs", "qgram", "cosine", "jaccard"))
+loop_studies(studies_folder, out_folder, methods = c("jw", "sw1", "nw1",
+  "nw3", "me", "lv", "dl", "osa", "lcs", "qgram", "cosine", "jaccard"))
 }
 \arguments{
 \item{studies_folder}{Directory from which to get study annotation files}
+
+\item{out_folder}{Directory to write the annotated file to}
 
 \item{methods}{Similarity measures to be applied to each sample annotation file}
 }
