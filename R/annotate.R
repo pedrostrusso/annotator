@@ -3,8 +3,8 @@
 #' @param annot A data.frame object containing sample annotation values
 #' @param method String similarity measure to be used. One of ("jw", "jaro",
 #'     "sw", "nw", "me", "lv", "dl", "osa", "lcs", "qgram", "cosine", "jaccard")
-#' @param column The column to be used to infer classes from. Default method "combine"
-#'     attempts to combine all columns for class inferral.
+#' @param p Penalty factor for Jaro-Winkler distance. If p=0 (default), the Jaro distance
+#' is returned.
 #' @param ... Additional arguments to the distance functions
 #' @export
 annotate <- function(annot, method=c("jw", "jaro", "sw", "nw", "me", "lv", "dl", "osa",

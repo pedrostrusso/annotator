@@ -1,7 +1,7 @@
 get_clusters <- function(annot, method, col, ...){
     sdm <- calculate_distance(annot, method, col, ...)
 
-    cl <- hdbscan2(xdist=sdm, minPts=3, gen_simplified_tree = FALSE, gen_hdbscan_tree = TRUE)
+    cl <- hdbscan2(xdist=sdm, minPts=3)
 
     clusts <- cl$cluster
 

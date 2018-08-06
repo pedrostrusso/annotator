@@ -4,19 +4,23 @@
 \alias{get_info_table}
 \title{Get information table}
 \usage{
-get_info_table(check_dir, func, methods = c("jaro", "jw", "sw1", "nw1",
-  "nw3", "me", "lv", "dl", "osa", "lcs", "qgram", "cosine", "jaccard"))
+get_info_table(check_dir, func_name = c("rand", "fnr", "fpr", "tpr"),
+  true_col = "TRUE_col", methods = c("jaro", "jw", "sw", "nw", "me",
+  "lv", "dl", "osa", "lcs", "qgram", "cosine", "jaccard"))
 }
 \arguments{
 \item{check_dir}{folder containing studies}
 
-\item{func}{a function for calculations. One of get_fnr, get_fpr or get_tpr.}
+\item{func_name}{a character string indicating a function for calculations.
+One of "rand", "fnr", "fpr" or "tpr".}
 
-\item{methods}{the methods to evaluate. Default is all of ("jaro", "jw", "sw1", "nw1", 
+\item{true_col}{character string indicating the column containing the true (manual) annotation of the samples}
+
+\item{methods}{the methods to evaluate. Default is all of ("jaro", "jw", "sw1", "nw1",
 "nw3", "me", "lv","dl", "osa", "lcs", "qgram", "cosine", "jaccard")}
 }
 \value{
-a table containing the specified calculation for each study using each method
+a data.frame containing the specified calculation for each study using each method
 }
 \description{
 Get information table

@@ -4,19 +4,16 @@
 \alias{hdbscan2}
 \title{Calculate HDBSCAN algorithm}
 \usage{
-hdbscan2(xdist, minPts = 5, gen_hdbscan_tree = FALSE,
-  gen_simplified_tree = FALSE)
+hdbscan2(xdist, minPts = 5)
 }
 \arguments{
 \item{xdist}{A distance matrix}
 
 \item{minPts}{Minimum number of points per cluster}
-
-\item{gen_hdbscan_tree}{logical; should the robust single linkage tree be explicitly computed.}
-
-\item{gen_simplified_tree}{logical; should the simplified hierarchy be explicitly computed.}
 }
 \description{
-Calculate HDBSCAN algorithm
+This is a modified version of the hdbscan function from the dbscan package
+in order to be able to calculate the KNN distance starting from a distance
+matrix.
 }
 \keyword{internal}

@@ -9,8 +9,6 @@ NULL
 #'
 #' @param xdist A distance matrix
 #' @param minPts Minimum number of points per cluster
-#' @param gen_hdbscan_tree logical; should the robust single linkage tree be explicitly computed.
-#' @param gen_simplified_tree logical; should the simplified hierarchy be explicitly computed.
 #'
 #' @keywords internal
 #' @export

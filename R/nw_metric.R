@@ -5,8 +5,10 @@ NULL
 #'
 #' @param A String to be compared
 #' @param B String to be compared
-#' @param my_params Match, mismatch, gap and gap character values
-#'     (Default: NameNeedle::defaultNeedleParams)
+#' @param nw_match Score to be given to matching characters (default: 1)
+#' @param nw_mismatch Penalty to be given to mismatching characters (default: -1)
+#' @param gap Penalty to be given to gaps (default: -1)
+#' @param gap_char Character to be used to represent gaps (default: "*")
 #'
 #' @export
 nw_metric <- function(A, B, nw_match=1, nw_mismatch=-1, gap=-1, gap_char="*"){
@@ -28,7 +30,6 @@ nw_metric <- function(A, B, nw_match=1, nw_mismatch=-1, gap=-1, gap_char="*"){
 #' @param string_vecA Vector of strings to be compared
 #' @param string_vecB Vector of strings to be compared
 #' @param ... Additional arguments to \code{nw_metrix()} function
-#'     (Default: NameNeedle::defaultNeedleParams)
 #'
 #' @export
 nw_matrix <- function(string_vecA, string_vecB, ...){

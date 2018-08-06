@@ -11,8 +11,7 @@ nw_matrix(string_vecA, string_vecB, ...)
 
 \item{string_vecB}{Vector of strings to be compared}
 
-\item{...}{Additional arguments to \code{nw_metrix()} function
-(Default: NameNeedle::defaultNeedleParams)}
+\item{...}{Additional arguments to \code{nw_metrix()} function}
 }
 \description{
 Needleman-Wunsch string similarity matrix

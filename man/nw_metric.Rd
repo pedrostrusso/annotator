@@ -4,15 +4,21 @@
 \alias{nw_metric}
 \title{Needleman-Wunsch string similarity}
 \usage{
-nw_metric(A, B, my_params)
+nw_metric(A, B, nw_match = 1, nw_mismatch = -1, gap = -1,
+  gap_char = "*")
 }
 \arguments{
 \item{A}{String to be compared}
 
 \item{B}{String to be compared}
 
-\item{my_params}{Match, mismatch, gap and gap character values
-(Default: NameNeedle::defaultNeedleParams)}
+\item{nw_match}{Score to be given to matching characters (default: 1)}
+
+\item{nw_mismatch}{Penalty to be given to mismatching characters (default: -1)}
+
+\item{gap}{Penalty to be given to gaps (default: -1)}
+
+\item{gap_char}{Character to be used to represent gaps (default: "*")}
 }
 \description{
 Needleman-Wunsch string similarity

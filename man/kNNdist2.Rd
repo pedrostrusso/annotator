@@ -7,7 +7,7 @@
 kNNdist2(sdm, k)
 }
 \arguments{
-\item{sdm}{String Distance Matrix, as returned by \code{calculate_distance} function}
+\item{sdm}{String Distance Matrix, as returned by the \code{calculate_distance} function}
 
 \item{k}{Number of neighbors to compute distance}
 }

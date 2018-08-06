@@ -1,5 +1,5 @@
-#' @import PTXQC
-#' @import qualV
+#' @importFrom PTXQC LCSn
+#' @importFrom qualV LCS
 NULL
 
 #' Automatic label creation
