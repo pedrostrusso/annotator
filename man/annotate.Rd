@@ -5,13 +5,17 @@
 \title{Annotate GEO samples}
 \usage{
 annotate(annot, method = c("jw", "jaro", "sw", "nw", "me", "lv", "dl",
-  "osa", "lcs", "qgram", "cosine", "jaccard"), p = 0, ...)
+  "osa", "lcs", "qgram", "cosine", "jaccard"), label_method = "all",
+  p = 0, ...)
 }
 \arguments{
 \item{annot}{A data.frame object containing sample annotation values}
 
-\item{method}{String similarity measure to be used. One of ("jw", "jaro",
-"sw", "nw", "me", "lv", "dl", "osa", "lcs", "qgram", "cosine", "jaccard")}
+\item{method}{String similarity measure to be used. One of "jw", "jaro",
+"sw", "nw", "me", "lv", "dl", "osa", "lcs", "qgram", "cosine", "jaccard"}
+
+\item{label_method}{Labelling method to be used. One of "all", "common",
+"unique", "lcsubstr", "lcsubseq".}
 
 \item{p}{Penalty factor for Jaro-Winkler distance. If p=0 (default), the Jaro distance
 is returned.}

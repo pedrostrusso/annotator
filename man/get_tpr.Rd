@@ -11,6 +11,9 @@ get_tpr(group1, group2)
 
 \item{group2}{The reference ("true") method}
 }
+\value{
+The true positive rate
+}
 \description{
 Calculate true positive rate between two clustering methods
 }

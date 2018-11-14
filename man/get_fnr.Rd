@@ -11,6 +11,14 @@ get_fnr(group1, group2)
 
 \item{group2}{The reference ("true") method}
 }
+\value{
+The false negative rate
+}
 \description{
 Calculate false negative rate between two clustering methods
+}
+\examples{
+g1 <- sample(1:2, size=10, replace=TRUE)
+g2 <- sample(1:3, size=10, replace=TRUE)
+get_fnr(g1, g2)
 }

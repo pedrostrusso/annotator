@@ -11,6 +11,9 @@ get_fpr(group1, group2)
 
 \item{group2}{The reference ("true") method}
 }
+\value{
+The false positive rate
+}
 \description{
 Calculate false positive rate between two clustering methods
 }

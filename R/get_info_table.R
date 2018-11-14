@@ -9,8 +9,6 @@
 #'
 #' @return a data.frame containing the specified calculation for each study using each method
 #' @export
-#'
-#' @examples
 get_info_table <- function(check_dir, func_name=c("rand", "fnr", "fpr", "tpr"),
                            true_col="TRUE_col",
                            methods = c("jaro", "jw", "sw", "nw", "me", "lv",

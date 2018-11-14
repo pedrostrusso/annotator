@@ -1,14 +1,33 @@
+#' Download and annotate a GSE study based on GSE number
+#'
+#' @param gse_id GSE ID of the study to be annotated
+#' @param method String similarity measure to be used. One of "jw", "jaro",
+#'     "sw", "nw", "me", "lv", "dl", "osa", "lcs", "qgram", "cosine", "jaccard"
+#' @param label_method Labelling method to be used. One of "all", "common",
+#' "unique", "lcsubstr", "lcsubseq".
+#' @param ... Other parameters to the \code{\link{annotate}} function
+#' @export
+annotate_gse <- function(gse_id, method="lv", label_method="all", ...){
+    annot <- scrape_sample_annot(gse_id)
+    annot <- annot[, c('Sample_geo_accession', "Sample_title",
+                       "Sample_source_name_ch1", "Sample_characteristics_ch1")]
+    res <- annotate(annot, method, label_method, ...)
+}
+
 #' Annotate GEO samples
 #'
 #' @param annot A data.frame object containing sample annotation values
-#' @param method String similarity measure to be used. One of ("jw", "jaro",
-#'     "sw", "nw", "me", "lv", "dl", "osa", "lcs", "qgram", "cosine", "jaccard")
+#' @param method String similarity measure to be used. One of "jw", "jaro",
+#'     "sw", "nw", "me", "lv", "dl", "osa", "lcs", "qgram", "cosine", "jaccard"
+#' @param label_method Labelling method to be used. One of "all", "common",
+#' "unique", "lcsubstr", "lcsubseq".
 #' @param p Penalty factor for Jaro-Winkler distance. If p=0 (default), the Jaro distance
 #' is returned.
 #' @param ... Additional arguments to the distance functions
 #' @export
 annotate <- function(annot, method=c("jw", "jaro", "sw", "nw", "me", "lv", "dl", "osa",
-                                      "lcs", "qgram", "cosine", "jaccard"), p=0, ...){
+                                      "lcs", "qgram", "cosine", "jaccard"), label_method="all",
+                         p=0, ...){
 
     method <- match.arg(method)
 
@@ -43,7 +62,7 @@ annotate <- function(annot, method=c("jw", "jaro", "sw", "nw", "me", "lv", "dl",
 
     annot0$Class <- scores_res[[1]]$cluster
 
-    annot0 <- label_annot(annot0)
+    annot0 <- label_annot(annot0, label_method)
 
     return(annot0)
 }
