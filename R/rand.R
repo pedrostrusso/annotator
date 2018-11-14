@@ -1,3 +1,6 @@
+#' @importFrom fossil rand.index
+NULL
+
 #' Get Rand index of annotated samples
 #'
 #' @param check_dir Directory which to check the annotations
