@@ -18,7 +18,7 @@ NULL
 #'    \item{lcsubseq }{Longest common subsequence in a class}
 #' }
 #' @export
-label_annot2 <- function(annot0, method="all"){
+label_annot <- function(annot0, method="all"){
 
     x <- annot0[, c("mega_col", "Class")]
 
