@@ -1,25 +1,9 @@
 #' @importFrom rentrez entrez_search entrez_summary
 #' @importFrom plyr ldply
+#' @importFrom dplyr bind_rows
 #' @importFrom rvest html_nodes html_text
 #' @importFrom xml2 as_xml_document read_html
 NULL
-
-scrape_sample_annot <- function(gse_id){
-    gds_search <- rentrez::entrez_search(db="gds", term=paste0(gse_id, "[ACCN] AND gsm[ETYP]"))
-    search_res <- rentrez::entrez_summary(db="gds", id=gds_search$ids)
-    res <- lapply(search_res, unlist)
-    res <- plyr::ldply(res)
-    gsm_ids <- res$accession
-    sample_chars <- sapply(gsm_ids, scrape_sample_char)
-    res$Sample_characteristics_ch1 <- sample_chars
-    res$gse <- paste0("GSE", res$gse)
-    res$gpl <- paste0("GPL", res$gpl)
-    res$gds <- paste0("GDS", res$gds)
-    res <- subset(res, select=c("gse", "accession", "gpl", "title", "summary", "Sample_characteristics_ch1"))
-    names(res) <- c("Sample_series_id", "Sample_geo_accession", "Sample_platform_id",
-                    "Sample_title", "Sample_source_name_ch1", "Sample_characteristics_ch1")
-    return(res)
-}
 
 scrape_sample_char <- function(gsm_id){
     url <- paste0("https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=", gsm_id)
@@ -30,3 +14,29 @@ scrape_sample_char <- function(gsm_id){
     chars <- trimws(chars)
     return(chars)
 }
+
+scrape_sample_annot <- function(gse_id){
+    gds_search <- rentrez::entrez_search(db="gds", term=paste0(gse_id, "[ACCN] AND gsm[ETYP]"))
+    sample_count <- gds_search$count
+
+    results <- data.frame()
+        
+    for(seq_start in seq(0, sample_count, 40)){
+        gds_search <- rentrez::entrez_search(db="gds", term=paste0(gse_id, "[ACCN] AND gsm[ETYP]"),
+                                             use_history=TRUE, retmax=40, retstart=seq_start)
+        search_res <- rentrez::entrez_summary(db="gds", id=gds_search$ids)
+        res <- lapply(search_res, unlist)
+        res <- plyr::ldply(res)
+        results <- bind_rows(results, res)
+    }
+            
+    gsm_ids <- results$accession
+    results$Sample_characteristics_ch1 <- sapply(gsm_ids, scrape_sample_char)
+    results$gpl <- paste0("GPL", results$gpl)
+    results$gds <- paste0("GDS", results$gds)
+    results <- subset(results, select=c("gse", "accession", "gpl", "title", "summary", "Sample_characteristics_ch1"))
+    names(results) <- c("Sample_series_id", "Sample_geo_accession", "Sample_platform_id",
+                                                                "Sample_title", "Sample_source_name_ch1", "Sample_characteristics_ch1")
+    return(results)
+}
+

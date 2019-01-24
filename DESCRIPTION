@@ -6,7 +6,7 @@ Description: This package attempts to take information from a GEO study and grou
     according to sample metadata string similarity.
 Depends: R (>= 3.4.0)
 Imports: FastKNN, NameNeedle, data.table, stringdist, dbscan,
-    PTXQC, textreuse, qualV, fossil, plyr, rentrez, rvest, xml2
+    PTXQC, textreuse, qualV, fossil, dplyr, plyr, rentrez, rvest, xml2
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
