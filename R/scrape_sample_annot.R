@@ -22,6 +22,8 @@ scrape_sample_annot <- function(gse_id){
     results <- data.frame()
         
     for(seq_start in seq(0, sample_count, 40)){
+        if(seq_start == sample_count) break
+        
         gds_search <- rentrez::entrez_search(db="gds", term=paste0(gse_id, "[ACCN] AND gsm[ETYP]"),
                                              use_history=TRUE, retmax=40, retstart=seq_start)
         search_res <- rentrez::entrez_summary(db="gds", id=gds_search$ids)
