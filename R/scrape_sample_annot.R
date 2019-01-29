@@ -27,6 +27,12 @@ scrape_sample_annot <- function(gse_id){
         gds_search <- rentrez::entrez_search(db="gds", term=paste0(gse_id, "[ACCN] AND gsm[ETYP]"),
                                              use_history=TRUE, retmax=40, retstart=seq_start)
         search_res <- rentrez::entrez_summary(db="gds", id=gds_search$ids)
+        if(!inherits(search_res, "esummary_list")){
+            temp <- list()
+            uid <- search_res$uid
+            temp[[uid]] <- search_res
+            search_res <- temp
+        }
         res <- lapply(search_res, unlist)
         res <- plyr::ldply(res)
         results <- bind_rows(results, res)
