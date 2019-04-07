@@ -57,6 +57,7 @@ label_annot <- function(annot0, method="all"){
 
         if(method == "all" | method == "lcsubseq"){
             # 4th label: longest common subsequence in the cluster
+            clust_data <- x[x$Class == cluster, ]
             res <- character(0)
             for(string in clust_data$mega_col){
                 a <- unlist(strsplit(string, " "))
