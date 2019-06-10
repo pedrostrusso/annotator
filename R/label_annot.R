@@ -33,11 +33,14 @@ label_annot <- function(annot0, method="all"){
     }
 
     for(cluster in as.character(unique(x$Class))){
+        clust_data <- x[x$Class == cluster, ]
+        strings <- clust_data$mega_col
+        keywords <- unlist(strsplit(strings, " "))
         if(method == "all" | method == "common"){
             # 1st label: unique cluster keywords (words repeated in all instances of the class)
-            clust_data <- x[x$Class == cluster, ]
-            strings <- clust_data$mega_col
-            keywords <- unlist(strsplit(strings, " "))
+            #clust_data <- x[x$Class == cluster, ]
+            #strings <- clust_data$mega_col
+            #keywords <- unlist(strsplit(strings, " "))
             label <- paste(unique(keywords[keywords %in% names(which(table(keywords) >= length(strings)))]), collapse=" ")
             annot0[annot0$Class == cluster, label_names[1]] <- label
         }
@@ -57,7 +60,7 @@ label_annot <- function(annot0, method="all"){
 
         if(method == "all" | method == "lcsubseq"){
             # 4th label: longest common subsequence in the cluster
-            clust_data <- x[x$Class == cluster, ]
+            #clust_data <- x[x$Class == cluster, ]
             res <- character(0)
             for(string in clust_data$mega_col){
                 a <- unlist(strsplit(string, " "))
